@@ -1,0 +1,289 @@
+/* Sade, ortalanmış ve animasyonsuz Docsify blog tasarımı */
+:root {
+  color-scheme: light;
+  --page-width: 760px;
+  --ink: #181818;
+  --muted: #6a6a6a;
+  --line: #e6e6e6;
+  --background: #ffffff;
+  --code-background: #f7f7f7;
+}
+*, *::before, *::after {
+  box-sizing: border-box;
+  animation: none !important;
+  transition: none !important;
+}
+html { scroll-behavior: auto !important; }
+body {
+  margin: 0 !important;
+  min-width: 0;
+  min-height: 100vh;
+  background: var(--background);
+  color: var(--ink);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 16px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  text-align: left;
+}
+.shell {
+  width: calc(100% - 48px);
+  max-width: var(--page-width);
+  margin-left: auto;
+  margin-right: auto;
+}
+.site-header {
+  width: 100%;
+  border-bottom: 1px solid var(--line);
+  background: #fff;
+}
+.header-inner {
+  min-height: 74px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+}
+.site-title {
+  color: var(--ink) !important;
+  text-decoration: none !important;
+  font-size: 23px;
+  font-weight: 750;
+  letter-spacing: -.7px;
+  white-space: nowrap;
+}
+.site-title span { color: #868686; }
+.site-nav {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 22px;
+}
+.site-nav a {
+  color: var(--ink) !important;
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none !important;
+  white-space: nowrap;
+}
+.site-nav a:hover { text-decoration: underline !important; }
+a:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 4px;
+}
+
+/* Docsify'nin 300px'lik sol menü ve pozisyon kurallarını tamamen sıfırla. */
+.sidebar,
+.sidebar-toggle,
+.app-nav,
+.github-corner,
+.progress,
+.search {
+  display: none !important;
+}
+main,
+#app,
+.content,
+main .content {
+  left: 0 !important;
+  right: auto !important;
+  top: auto !important;
+  bottom: auto !important;
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+  border: 0 !important;
+  padding: 0 !important;
+  transform: none !important;
+  float: none !important;
+  min-width: 0 !important;
+  overflow: visible !important;
+}
+main,
+main .content,
+.content {
+  position: relative !important;
+}
+#app { padding: 50px 24px !important; text-align: center; }
+#app:has(main) { padding: 0 !important; text-align: left; }
+
+/* Her sayfada başlıklar, metinler ve menü tam aynı sütuna hizalanır. */
+main .markdown-section,
+.content .markdown-section,
+.markdown-section {
+  display: block !important;
+  position: relative !important;
+  width: calc(100% - 48px) !important;
+  max-width: var(--page-width) !important;
+  min-width: 0 !important;
+  margin: 0 auto !important;
+  padding: 50px 0 84px !important;
+  transform: none !important;
+  text-align: left !important;
+  color: var(--ink);
+  font-size: 16px;
+  line-height: 1.83;
+  overflow-wrap: anywhere;
+}
+.markdown-section > :first-child { margin-top: 0 !important; }
+.markdown-section h1,
+.markdown-section h2,
+.markdown-section h3,
+.markdown-section h4 {
+  color: var(--ink);
+  font-weight: 700;
+  line-height: 1.35;
+  letter-spacing: -.025em;
+  text-align: left;
+}
+.markdown-section h1 {
+  font-size: clamp(29px, 4.5vw, 38px);
+  margin: 0 0 14px !important;
+  padding: 0 !important;
+  border: 0 !important;
+}
+.markdown-section h2 {
+  font-size: 25px;
+  margin: 42px 0 14px !important;
+  padding: 0 !important;
+  border: 0 !important;
+}
+.markdown-section h3 {
+  font-size: 20px;
+  margin: 30px 0 12px !important;
+}
+.markdown-section p { margin: 0 0 20px; }
+.markdown-section ul,
+.markdown-section ol { padding-left: 23px; margin: 0 0 22px; }
+.markdown-section a {
+  color: var(--ink) !important;
+  text-underline-offset: 3px;
+}
+.markdown-section a.anchor { text-decoration: none; }
+.markdown-section img { max-width: 100%; height: auto; }
+.markdown-section blockquote {
+  border-left: 3px solid #d4d4d4;
+  margin: 24px 0;
+  padding: 0 0 0 18px;
+  color: var(--muted);
+}
+.markdown-section blockquote p { color: inherit; margin: 0; }
+.markdown-section hr {
+  border: 0;
+  border-top: 1px solid var(--line);
+  margin: 34px 0;
+}
+.markdown-section pre,
+.markdown-section pre[data-lang] {
+  display: block;
+  margin: 22px 0;
+  padding: 17px 20px;
+  border: 1px solid #ebebeb;
+  background: var(--code-background) !important;
+  border-radius: 5px;
+  overflow-x: auto !important;
+  white-space: pre;
+}
+.markdown-section pre code,
+.markdown-section code {
+  color: var(--ink);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: .88em;
+}
+.markdown-section :not(pre) > code {
+  background: var(--code-background);
+  border: 1px solid #ededed;
+  border-radius: 3px;
+  padding: 2px 5px;
+}
+.markdown-section pre code {
+  background: transparent !important;
+  padding: 0 !important;
+  border: 0 !important;
+  color: var(--ink) !important;
+}
+.markdown-section table {
+  display: block;
+  width: 100%;
+  margin: 22px 0;
+  overflow-x: auto;
+  border-collapse: collapse;
+}
+.markdown-section th,
+.markdown-section td {
+  border: 1px solid var(--line) !important;
+  padding: 8px 12px;
+  text-align: left;
+}
+.markdown-section th { background: #fafafa; }
+
+/* Yazılar başlığından aşağıya akıcı ve düzgün sıralama */
+.post-list,
+.markdown-section .post-list {
+  list-style: none !important;
+  margin: 34px 0 0 !important;
+  padding: 0 !important;
+}
+.post-item {
+  list-style: none;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 17px 0;
+  margin: 0 !important;
+  border-bottom: 1px solid var(--line);
+}
+.post-item:first-child { border-top: 1px solid var(--line); }
+.post-item::before { display: none !important; }
+.markdown-section .post-item a {
+  color: var(--ink) !important;
+  text-decoration: none !important;
+  font-weight: 600;
+  font-size: 17px;
+  line-height: 1.5;
+}
+.markdown-section .post-item a:hover { text-decoration: underline !important; }
+.post-date {
+  color: var(--muted);
+  font-size: 13px;
+  white-space: nowrap;
+}
+.post-error { color: #a53131; }
+
+.site-footer {
+  width: 100%;
+  border-top: 1px solid var(--line);
+}
+.footer-inner {
+  padding-top: 22px;
+  padding-bottom: 22px;
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  color: var(--muted);
+  font-size: 12px;
+}
+@media (max-width: 600px) {
+  .shell,
+  main .markdown-section,
+  .content .markdown-section,
+  .markdown-section {
+    width: calc(100% - 36px) !important;
+  }
+  .header-inner { min-height: 66px; gap: 8px; }
+  .site-title { font-size: 21px; }
+  .site-nav { gap: 12px; }
+  .site-nav a { font-size: 12px; }
+  main .markdown-section,
+  .content .markdown-section,
+  .markdown-section {
+    padding-top: 34px !important;
+    padding-bottom: 62px !important;
+    font-size: 15px;
+  }
+  .post-item { flex-direction: column; align-items: flex-start; gap: 3px; }
+  .post-date { font-size: 12px; }
+  .footer-inner { flex-wrap: wrap; }
+}

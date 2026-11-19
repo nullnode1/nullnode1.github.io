@@ -1,5 +1,5 @@
 # Yazılar
 
-Teknoloji, açık kaynak ve üzerinde çalıştığım projeler hakkında tuttuğum notlar.
+Yazılım geliştirme, açık kaynak, küçük projeler ve öğrendiğim konular hakkında notlar.
 
 <div id="post-list" aria-live="polite">Yazılar yükleniyor…</div>

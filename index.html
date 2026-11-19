@@ -1,29 +1,33 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="light">
-  <meta name="description" content="Markdown ile hazırlanmış kişisel yazılar ve notlar.">
+  <meta name="description" content="Açık kaynak, yazılım ve kişisel notlar.">
   <title>Notlar — Kişisel Blog</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css">
   <link rel="stylesheet" href="./assets/blog.css">
 </head>
 <body>
   <header class="site-header">
-    <div class="header-inner">
-      <a class="site-brand" href="#/" aria-label="Blog ana sayfası">notlar<span class="brand-dot">.</span></a>
+    <div class="shell header-inner">
+      <a class="site-title" href="#/">notlar<span aria-hidden="true">.</span></a>
       <nav class="site-nav" aria-label="Ana menü">
         <a href="#/">Yazılar</a>
         <a href="#/hakkimda">Hakkımda</a>
-        <a href="https://github.com/nullnode1/nullnode1.github.io" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="https://github.com/nullnode1" target="_blank" rel="noopener noreferrer">GitHub</a>
       </nav>
     </div>
   </header>
 
-  <div id="app">İçerik yükleniyor…</div>
+  <div id="app" aria-live="polite">Yazılar yükleniyor…</div>
 
   <footer class="site-footer">
-    <div class="footer-inner">Markdown ile yazıldı · Docsify ve GitHub Pages ile yayınlandı.</div>
+    <div class="shell footer-inner">
+      <span>© 2026 · Kişisel notlar</span>
+      <span>Markdown ile hazırlandı.</span>
+    </div>
   </footer>
 
   <script src="./assets/blog.js"></script>
@@ -32,11 +36,15 @@
       name: 'Notlar',
       homepage: 'README.md',
       routerMode: 'hash',
+      relativePath: false,
       loadSidebar: false,
+      hideSidebar: true,
+      loadNavbar: false,
+      coverpage: false,
       maxLevel: 0,
       subMaxLevel: 0,
       auto2top: true,
-      relativePath: true,
+      themeColor: '#171717',
       plugins: [window.blogPostPlugin]
     };
   </script>

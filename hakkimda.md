@@ -1,7 +1,7 @@
 # Hakkımda
 
-Merhaba! Bu blogda yazılım geliştirme, açık kaynak projeleri ve öğrendiklerimle ilgili yazılar yayımlıyorum.
+Merhaba! Bu blogda geliştirdiğim projeleri ve öğrendiklerimi paylaşıyorum.
 
-Yazılarımı doğrudan Markdown dosyalarıyla hazırlıyorum.
+Özellikle oyun geliştirme, web teknolojileri ve açık kaynak yazılımlarla ilgileniyorum.
 
-[GitHub profilim](https://github.com/nullnode1)
+Kodlarım ve projelerim için [GitHub profilime](https://github.com/nullnode1) göz atabilirsin.
