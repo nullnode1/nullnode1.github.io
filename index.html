@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light">
+  <meta name="description" content="Markdown ile hazırlanmış kişisel yazılar ve notlar.">
+  <title>Notlar — Kişisel Blog</title>
+  <link rel="stylesheet" href="./assets/blog.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="site-brand" href="#/" aria-label="Blog ana sayfası">notlar<span class="brand-dot">.</span></a>
+      <nav class="site-nav" aria-label="Ana menü">
+        <a href="#/">Yazılar</a>
+        <a href="#/hakkimda">Hakkımda</a>
+        <a href="https://github.com/nullnode1/nullnode1.github.io" target="_blank" rel="noopener noreferrer">GitHub</a>
+      </nav>
+    </div>
+  </header>
+
+  <div id="app">İçerik yükleniyor…</div>
+
+  <footer class="site-footer">
+    <div class="footer-inner">Markdown ile yazıldı · Docsify ve GitHub Pages ile yayınlandı.</div>
+  </footer>
+
+  <script src="./assets/blog.js"></script>
+  <script>
+    window.$docsify = {
+      name: 'Notlar',
+      homepage: 'README.md',
+      routerMode: 'hash',
+      loadSidebar: false,
+      maxLevel: 0,
+      subMaxLevel: 0,
+      auto2top: true,
+      relativePath: true,
+      plugins: [window.blogPostPlugin]
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/docsify.min.js"></script>
+</body>
+</html>
