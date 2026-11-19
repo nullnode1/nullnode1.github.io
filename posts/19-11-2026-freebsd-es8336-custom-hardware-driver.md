@@ -1,51 +1,363 @@
-# FreeBSD ES8336 Tiger Lake Sürücsü
+# FreeBSD için ES8336 Tiger Lake Ses Sürücüsü
 
 *19 Kasım 2026*
 
 ## Giriş
-Merhabalar! Ben **Görkem**, günlük hayatımda **Fedora Linux** kullanan birisiyim. Normalde pek oyun oynamam. Genelde bilgisayarımla uğraşmayı ve onu kurcalamayı severim.
-Geçenlerde **FreeBSD** kullanmaya karar verdim. Aslında önceden denemiştim. FreeBSD 14.2 sürümünü bilgisayarıma temiz kurulum yaparak kurmuştum. Fakat kurmaz olaydım, **Wi-Fi** o kadar yavaş çalışıyor ki sinirden laptopu param parça edecektim. Neyse, sistemi kurdum. Masaüstü ortamı olarak o zaman **KDE** seçmiş idim. Sistem açıldığında gözle fark edilir şekilde **garip** bir biçimde çalışıyor idi. Ses sürücüleri çalışmıyor, bluetooth almış başını gidiyor, ekran kartı sürücüsü bile ağlıyor idi. Ekrandaki yırtılmalar sanki 60Hz ekranda valoyu 100fps oynarmışcasına ekranda yırtılmalar vardı. 
 
-O zaman **Fedora'ya** geri dönmüş idim. **Fedora** öyle bir sistem ki bilgisayarımda varsayılan olarak **Windows'tan** bile kat kat daha iyi çalışıyordu. Bilgisayarımın üreticisi **Casper** donanıma özel **OEM** sürücüler ürettiği için ve bu sürücüler **Windows'ta** şuanda düzgün çalışmadığı için ses kartı bilgisayar açıldıktan 5 saniye sonrasında otomatik kapanıyor idi. Öyle bir rezillik. Fakat **Fedora'da** bilgisayarımkurulduğu anda varsayılan olarak **Wi-Fi*, **Ses** ve daha nicesi her şey tek anlamıyla kusursuz bir şekilde çalışıyor idi. Bende zaten **Windows'tan** **Fedora'ya** geçtiğimde ciddi anlamda şaşırmıştım. Yaklaşık 2-3 yıl **Fedora** kullandım. Gayet memnun idim. **Windows'u* gram aratmıyor idi. Ben aynı zamanda sadece **Fedora** değil birden fazla **Linux** dağıtımını kendi bilgisayarımda denedim, kurdum, çalıştırdım. Her dağıtımın kendince güzel yanı var. Mesela **CahcyOS** Arch Linux tabanlı olmasına rağmen çok stabil ve çok hızlı, **Ubuntu** ise kolaylık sadelik ve paket genişliği açısından **Debian** tabanlı olduğu için çok güzel. Ancak şöyle bir sorun vardı. Bilgisayarımın ses kartı **Fedora** dışında hiçbir dağıtımda çalışmıyor idi. Ama teknik olarak destekliyor ve görüyor idi. Tek sorun konfigrasyon hatası. Bilgisayar açılırken ses kartımı başlatmak yerine direk **headphones** yani kulaklık moduna geçiyordu ve hoparlörden hiçbir ses gelmiyordu. Ben de **yapay-zeka** kullanaraktan o dönem konfigrasyonu düzeltip sistemde çalıştırılabilir hale getiriyordum. Şimdi ise **Fedora'da** otomatik hazır gelen **sof-essx8336** konfigrasyonlarını kopyalayıp her dağıtımda kullanıp sorunumu çözebiliyorum.
+Merhabalar! Ben **Görkem**. Günlük hayatımda **Fedora Linux** kullanan birisiyim. Normalde pek oyun oynamam. Genellikle bilgisayarımla uğraşmayı, yeni şeyler denemeyi ve sistemi kurcalamayı severim.
 
-Yaklaşık 1-2 hafta önce birazcık canım sıkıldı. Sonrasında ise **FreeBSD**'nin yeni sürümleri çıktığını öğrendim. Yeni sürümde yani **15.1** sürümünde **Wi-Fi** vb. sorunların büyük ölçüde düzeltildiği ve laptop uyumluluk projesi olduğunu gördüm. Bende acaba bu sefer nasıl çalışır diye merak edip akşam **FreeBSD-15.1-RELEASE-amd64-memstick.img** dosyasını indirip bilgisayarıma kurulum yaptım. 
+Geçenlerde **FreeBSD** kullanmaya karar verdim. Aslında daha önce de denemiştim. O zamanlar FreeBSD 14.2 sürümünü bilgisayarıma temiz kurulum yaparak yüklemiştim.
 
-Kurulum ekranının tasarımı eski olmasına rağmen gayet anlaşılır bir şekilde kurulumu yaptım. Kurulum betiğine birkaç yenilik eklemişler. O da hoşuma gitti. Tabi **grafiksel arayüz yok** bu normal çünkü **FreeBSD masaüstü odaklı değil, sunucu odaklı bir işletim sistemi.** Şuanda amacı dışında kullanım yapıyorum ama buna rağmen çok hafif ve hızlı bir sistem. **FreeBSD** vakfıda şuan bunun farkında ki artık laptop projesini başlatmış durumdalar: [FreeBSD Laptop Projesi](https://www.freebsd.org/status/report-2026-01-2026-03/laptop-integration/)
+Fakat kurmaz olaydım!
 
-Neyse, sistemi kurdum. Oturum yöneticisi için hız ve hafiflik odaklı olan **LightDM**'yi seçtim. Görüntü sunucusu için ise ne yazık ki **Wayland** desteği hala deneysel ve hala buglar bulunduğu için daha eski ama kaliteli olan **X11** görüntü sunucusunu seçtim.
+**Wi-Fi** o kadar yavaş çalışıyordu ki sinirden laptopu paramparça edecektim. Neyse, bir şekilde sistemi kurdum. Masaüstü ortamı olarak da o zamanlar **KDE Plasma** kullanmayı tercih etmiştim.
 
-Sistem ağır olmasın, görüntü net ve hızlı olsun diye de **Masaüstü ortamı olarak XFCE4 seçtim.** Birkaç ayar yaptıktan sonra **XFCE4'ü** istediğim kıvama getirdim ve masaüstümü kurdum.
+Sistem açıldığında her şey gözle görülür şekilde garip çalışıyordu. Ses sürücüleri çalışmıyor, Bluetooth almış başını gidiyor, ekran kartı sürücüsü bile ağlıyordu.
 
-Şimdi ise sistemimde şuan nelerin çalışıp çalışmadığına gelelim.
+Ekrandaki yırtılmalar da cabası! Sanki 60 Hz ekranda Valorant'ı 100 FPS oynuyormuşum gibi sürekli görüntü yırtılması yaşıyordum.
 
-**Ekran Kartı** yani **İntel Iris XE TGL2** sürücüleri çok güzel bir şekilde çalışıyor. **Vulkan**, **OpenGL** vb. grafik işleyicileride çok güzel bir şekilde çalışıyor. 
+Kısacası, pek de güzel bir deneyim değildi.
 
-**Pil Yönetimi** çalışıyor olarak gördüm, çok kurcalamadım pil tasarufu, uyku modu, pilden çıkmasını ve pile takılmasını algılama vb. çalışıyor. 
+## Fedora'ya Geri Dönüş
 
-**Görüntü** sürücüleri çalışıyor yani ekran parlaklığı yönetimi vb. sorunsuz çalışıyor **ama onu yönetmek için özel küçük bir arayüz yazdım ama teknik olarak çalışıyor.** 
+O dönem yaşadığım sorunlardan dolayı tekrar **Fedora'ya** dönmüştüm.
 
-**Bluetooth** sürücülerini henüz denemedim şuanda çalışıyor mu emin değilim ama kullanmıyorum.
+Fedora öyle bir sistem ki benim bilgisayarımda varsayılan olarak **Windows'tan bile kat kat daha iyi** çalışıyordu.
 
-**USB** sürücüleri ise USB vb. okuma başta çalıştı ama sadece usb nin bağlı olup olmadığını görüyor idi, içine erişemiyor idi. Küçük bir ayarla hemen onu düzelttik yoksa varsayılan olarak sürücüler var, çalışıyor.
+Bilgisayarımın üreticisi **Casper**. Kullandığım modelde bazı donanımların Windows tarafında özel OEM sürücülerine ve yapılandırmalarına ihtiyacı var. Ancak Windows'ta yaşadığım bir ses sorunu vardı.
 
-**Mikrofon** sürücüsü çalışıyor çünkü Laptopun mikrofonu ses kartına bağlı değil, USB üzerinden çalışmakta.
+Bilgisayar açıldıktan yaklaşık 5 saniye sonra ses kartı kendiliğinden kapanıyordu. Ses gidiyor, bir daha da gelmiyordu.
 
-**Ses Sürücüleri** aha, keyfimin içine eden şeyde tam bu idi. Bende bir **Intel Tiger Lake-LP Smart Sound Technology** ses yongası var. Ama... bu ses yongasının çalışması için **SOF (Sound Open Firmware)** desteğine ihtiyacı var. Ve tahmin edin bakalım sorun ne? **FreeBSD** için resmi bir **SOF** sürücüsü yok! bunun nedeni ise **SOF** projesinin çok kapsamlı ve büyük bir proje olması ve geliştirici ekibin şuanda bu desteği arka plana alıp sunucular için optimizasyon yamaları vb. ile uğraşması.
+Öyle bir rezillik!
 
-Yıllardır **FreeBSD**'nin forumlarında, topluluk platformlarında bu desteğin ne zaman geleceği, hoparlörün çalışmadığı vb. bir sürü şikayet ve sitem bulunmaktadır. Ben de birkaç gün öncesinde **FreeBSD**'nin resmi **Forum** sayfasında bir konu açmıştım. 
+Fakat **Fedora'da** durum tamamen farklıydı. Sistemi kurduğum anda **Wi-Fi, ses, ekran kartı** ve diğer donanımlar herhangi bir ek uğraş gerektirmeden çalışıyordu.
 
-Açtığım konu şu şekilde idi: [FreeBSD için SOF desteği vb. getirmeyi düşünüyor musunuz? Ve bilgisayarımdaki ses sorununu nasıl çözerim?](https://forums.freebsd.org/threads/any-plans-to-bring-intel-sof-audio-support-to-freebsd-tiger-lake-laptops.104378/post-783386)
+Windows'tan Fedora'ya ilk geçtiğimde ciddi anlamda şaşırmıştım.
 
-Forumdaki kişiler sağolsun ilgi gösterdiler yardımcı olmaya çalıştılar ama ne yazık ki **SOF** desteği olmadığı için şuan bunun mümkün olmadığını öğrendim.
+Yaklaşık **2-3 yıl Fedora kullandım** ve gayet memnundum. Windows'u gram aratmıyordu.
 
-Bu konu iki gündür kafamı karıştırdı. Yani **FreeBSD** direk **UNIX** tabanlı bütün bir işletim sistemi. **LINUX** ise **UNIX**'in çalışma mantığını kopyalayarak yapılmış alternatif açık kaynak kodlu bir işletim sistemi idi. Ama araştırdığım bazı kaynaklara göre zaten **SOF** sürücüsünün **LINUX** için stabil ve çalışır bir hal alması yıllar sürmüş. 
+Tabii bu süre içerisinde yalnızca Fedora kullanmadım. Birçok farklı **Linux dağıtımını** kendi bilgisayarımda kurup denedim.
 
-Bende dedim madem ses kartım çalışmıyor, bende **LINUX**'ta halihazırda bulunan ses sürücüsünü **sadece kendi yonga setim için yazmaya karar verdim.** Ama bir sorunum vardı çünkü ben bir **DRIVER** yazacak kadar teknik bilgi ve programlama dili bilgisine sahip değilim. Bu sebepten ötürü bu projeyi **yapay-zeka** ile yapmaya karar verdim. Öncelikle, internetten **LINUX** için yapılmış `sof-essx8336` sürücüsünün kaynak kodunu edinip kendi **Fedora** sisteminden edindiğim konfigrasyon dosyalarını **GPT 6.1 Sol, High Effort**'a atarak sesin öncelikle diğer linux dağıtımlarında ne gibi tepki verdiği, **Fedora'da** nasıl çalıştığı ve **Windows'ta** sesin ne gibi tepkiler verdiğini teker teker ona anlattım. 
+Her dağıtımın kendine göre güzel özellikleri var.
 
-Öncelikle model, yapılandırma için benim kendi bilgisayarımdan **LOG** toplayan birkaç **python** ve **sh** tabanlı tool yazdı. AI ile teker teker sistemde ses kanallarının nasıl çalıştığı, adreslerin nerede olduğunu bulma vb. baya bi deneme yanılma ile **ilk sesi 4 saatin sonunda** çıkarabildik. Sonrasında ise üstüne yamalar, düzenlemeler, sistem başlayınca boot olma vb. toplam 11 saatte sadece hoparlörden ses çıkaran basit bir sürücü yazabildik.
+Mesela **CachyOS**, Arch Linux tabanlı olmasına rağmen benim denemelerimde oldukça hızlı ve kararlı çalışıyordu. **Ubuntu** ise kullanım kolaylığı, sadeliği ve Debian tabanından gelen geniş paket ekosistemi sayesinde güzel bir alternatifti.
 
-1 Gün sonra da **JAK** yani kablolu kulaklık desteği için uğraşmaya başladım. Aslında bu daha kolay oldu. Çünkü elimizde halihazırda bu donanım için çalışan bir speaker sürücüsü var. Ben bunun üstüne jak kulaklığı tak çıkar, ses testi, jak girince sış hoparlörü kapat vb. bunun üzerinde yine deneme yanılma ile **GPT** ile yaptık. 6 Saat daha çalıştıktan sonra toplam 17-18 saatte artık çalışan deneysel bir sürücü elde ettik. Bende benle benzer yonga kullanan veya benzer sisteme sahip olan insanlar için işe yarayabileceğini düşünerek açık kaynak kodlu bir şekilde tüm sürücüyü yayınladım. Aynı zamanda **GPT** tarafınan birkaç dökümantasyon hazırladım. Bu dökümantasyonlarda sürücünün nasıl çalıştığı vb. herşey yazıyor. Yani bu sürücüyü kendi bilgisayarına uyarlamak isteyen bir geliştirici bu notlara bakarak kendisi uyarlayabilir. Eğer hiçbir şey bilmiyor ise notları **GPT** veya **Claude** gibi muhakeme yeteneği güçlü olan güncel modellere kaynak kodunu vererek kendi bilgisayarına uyarlama girişiminde bulunabilir.
+Ancak şöyle bir sorun vardı:
 
-Şuanlık bu kadar. Yazımı okuduğunuz için teşekkür ederim. Aşağıdaki linkten projeye ulaşabilirsiniz.
+**Bilgisayarımın ses kartı, Fedora dışında denediğim dağıtımların çoğunda düzgün çalışmıyordu.**
 
-Github: [https://github.com/nullnode1/essxsof](https://github.com/nullnode1/essxsof)
+Aslında Linux çekirdeği ses donanımımı tanıyordu. Yani donanım tamamen desteksiz değildi. Sorun daha çok ses kartının nasıl yapılandırıldığıyla ilgiliydi.
+
+Bilgisayar açılırken hoparlörü düzgün şekilde etkinleştirmek yerine doğrudan **headphones**, yani kulaklık çıkışına geçiyordu. Bu nedenle laptopun kendi hoparlörlerinden ses alamıyordum.
+
+Ben de o dönem yapay zekâdan yardım alarak yapılandırma dosyalarını düzenliyor ve ses kartını çalışır hâle getiriyordum.
+
+Şimdiyse Fedora'da hazır gelen **`sof-essx8336`** ile ilgili yapılandırmalardan yararlanarak diğer Linux dağıtımlarında da bu sorunu çözebiliyorum.
+
+Yani Linux tarafında ses sorununu bir şekilde halletmiştim.
+
+Ama asıl macera daha yeni başlıyordu.
+
+## FreeBSD 15.1 ile Yeniden Tanışma
+
+Yaklaşık 1-2 hafta önce biraz canım sıkıldı. Ne yapsam diye düşünürken aklıma tekrar **FreeBSD** geldi.
+
+Yeni sürümlerini araştırmaya başladım. Özellikle **FreeBSD 15.1** sürümünde dizüstü bilgisayar uyumluluğuyla ilgili çalışmaların ilerlediğini ve FreeBSD Vakfının bu konuya daha fazla önem vermeye başladığını gördüm.
+
+Bunun üzerine kendi kendime dedim ki:
+
+**"Acaba bu sefer bilgisayarımda nasıl çalışacak?"**
+
+Akşamına `FreeBSD-15.1-RELEASE-amd64-memstick.img` dosyasını indirip bilgisayarıma kurulum yaptım.
+
+Kurulum ekranının tasarımı eski olmasına rağmen oldukça anlaşılırdı. Hatta kurulum aracına birkaç yeni özellik de eklemişler. Bu da hoşuma gitti.
+
+Tabii kurulumdan sonra varsayılan olarak grafiksel bir masaüstüyle karşılaşmıyorsunuz. Bu normal çünkü FreeBSD, Linux dağıtımlarının çoğundan farklı olarak masaüstü ortamını kullanıcıya seçtiren bir yapıya sahip.
+
+Ayrıca FreeBSD, masaüstünde de kullanılabilmesine rağmen uzun yıllardır özellikle sunucu ve sistem yönetimi alanlarında güçlü bir yere sahip.
+
+Yine de günlük kullanımda oldukça hafif ve hızlı çalışabiliyor.
+
+**FreeBSD Vakfı** da dizüstü bilgisayar deneyimini iyileştirmek için çalışmalar yürütüyor.
+
+Merak edenler için:
+
+[FreeBSD Laptop Testing and Integration Project](https://www.freebsd.org/status/report-2026-01-2026-03/laptop-integration/)
+
+Neyse, sistemi kurdum.
+
+Oturum yöneticisi olarak hafif olması nedeniyle **LightDM** kullanmayı tercih ettim.
+
+Görüntüleme sistemi içinse **X11** seçtim. Aslında FreeBSD üzerinde Wayland kullanmak da mümkün. Fakat bazı masaüstü ortamlarında ve donanımlarda uyumluluk sorunları yaşanabildiğinden, kendi bilgisayarımda daha sorunsuz olacağını düşündüğüm X11 ile devam etmeye karar verdim.
+
+Masaüstü ortamı olarak da **XFCE4** seçtim.
+
+Amacım basitti: Hafif, hızlı, sade ve günlük kullanımda beni uğraştırmayacak bir sistem kurmak.
+
+Birkaç ayar yaptıktan sonra XFCE4'ü istediğim kıvama getirdim ve masaüstümü tamamladım.
+
+Sonuç gerçekten hoşuma gitti!
+
+## Peki, Donanımlar Çalışıyor mu?
+
+Şimdi gelelim FreeBSD 15.1 kurduktan sonra bilgisayarımda nelerin çalışıp nelerin çalışmadığına.
+
+**Ekran Kartı**
+
+Bilgisayarımda **Intel Iris Xe (Tiger Lake GT2)** grafik birimi bulunuyor.
+
+Ekran kartı sürücüsü gayet güzel çalışıyor. **OpenGL, Vulkan** ve diğer grafik özelliklerinde yaptığım denemelerde ciddi bir sorunla karşılaşmadım.
+
+Önceki FreeBSD deneyimime göre oldukça iyi durumdaydı.
+
+**Pil Yönetimi**
+
+Pil yönetimi çalışıyor gibi görünüyor. Açıkçası çok fazla kurcalamadım.
+
+Ancak pil durumunu algılama, şarj kablosunu takıp çıkarınca durumun değişmesi ve temel güç yönetimi özellikleri çalışıyordu.
+
+Uyku modu ve pil tasarrufu gibi konularda ise daha kapsamlı testler yapmadım.
+
+**Ekran Parlaklığı**
+
+Ekran parlaklığını değiştirebiliyorum. Yani donanım tarafında bu özellik çalışıyor.
+
+Ancak parlaklığı daha rahat yönetebilmek için kendime küçük bir arayüz yazdım.
+
+Sonuç olarak parlaklık sorunum yok.
+
+**Bluetooth**
+
+Bluetooth'u henüz test etmedim.
+
+Açıkçası günlük hayatımda çok fazla kullanmadığım için şimdilik öncelik vermedim. Dolayısıyla çalışıp çalışmadığı konusunda kesin bir şey söyleyemiyorum.
+
+**USB**
+
+USB aygıtları ilk başta biraz garip davranıyordu.
+
+Sistem USB belleği algılıyordu ama dosyalarına doğrudan erişemiyordum. Aslında sorun USB sürücüsünden ziyade dosya sisteminin bağlanmasıyla ilgiliydi.
+
+Küçük bir yapılandırma yaptıktan sonra bu sorunu da çözdüm.
+
+**Mikrofon**
+
+Kullandığım USB mikrofon çalışıyordu.
+
+Ancak burada önemli bir ayrıntı var: USB mikrofon ayrı bir ses aygıtı olarak çalıştığından, laptopun dahili ES8336 ses donanımıyla aynı sürücüye ihtiyaç duymuyor.
+
+**Ses Sürücüleri**
+
+Aha! Geldik keyfimin içine eden asıl meseleye.
+
+Bilgisayarımda **Intel Tiger Lake-LP Smart Sound Technology** ses denetleyicisi ve **Everest ES8336** ses kodeği bulunuyor.
+
+Linux tarafında bu donanımın çalışması için **SOF (Sound Open Firmware)** altyapısı ve uygun ses sürücülerinden yararlanılıyor.
+
+Fakat tahmin edin bakalım sorun ne?
+
+**FreeBSD'de benim donanımım için hazır ve sorunsuz çalışan bir Intel SOF/ES8336 ses çözümü yoktu!**
+
+SOF, yalnızca basit bir ses sürücüsünden ibaret değil. İçerisinde firmware, donanımla iletişim, ses işleme ve farklı bileşenlerin bir arada çalışmasını sağlayan oldukça kapsamlı bir altyapı bulunuyor.
+
+Dolayısıyla Linux'taki sürücüyü alıp FreeBSD'ye kopyalayarak çalıştırmak mümkün değil.
+
+FreeBSD'nin kendi çekirdek mimarisi ve ses altyapısıyla uyumlu bir çözüm gerekiyor.
+
+Yıllardır FreeBSD forumlarında ve çeşitli topluluk platformlarında Intel SOF desteği hakkında sorular soruluyor. Özellikle bazı dizüstü bilgisayarlarda dahili hoparlörlerin çalışmaması sıkça gündeme geliyor.
+
+Ben de birkaç gün önce **FreeBSD'nin resmî forumunda** bir konu açmıştım.
+
+[FreeBSD için Intel SOF desteği planlanıyor mu? Tiger Lake ses sorunumu nasıl çözebilirim?](https://forums.freebsd.org/threads/any-plans-to-bring-intel-sof-audio-support-to-freebsd-tiger-lake-laptops.104378/post-783386)
+
+Forumdaki kişiler sağ olsun, konuyla ilgilendiler ve yardımcı olmaya çalıştılar.
+
+Ancak benim donanımım için doğrudan kullanabileceğim hazır bir çözüm bulunmadığını öğrendim.
+
+İşte bu mesele birkaç gün boyunca kafamı kurcaladı.
+
+## Kendi Ses Sürücümü Yazmaya Karar Verdim
+
+Şöyle düşündüm:
+
+FreeBSD ve Linux birbirinden farklı sistemler olsa da ikisi de Unix benzeri işletim sistemleri dünyasında yer alıyor.
+
+FreeBSD kendi çekirdeği, kullanıcı alanı araçları ve sistem bileşenleriyle bütün bir işletim sistemi olarak geliştiriliyor. Linux ise teknik olarak bir çekirdek ve bu çekirdeği kullanan çeşitli işletim sistemi dağıtımları bulunuyor.
+
+Her ikisinin de donanımla iletişim kurma yöntemleri ve sürücü mimarileri birbirinden farklı.
+
+Üstelik araştırdığım kaynaklardan, Intel SOF altyapısının Linux tarafında bile olgunlaşmasının uzun yıllar aldığını gördüm.
+
+Bunun üzerine kendi kendime dedim ki:
+
+**"Madem benim ses kartım çalışmıyor, o zaman neden kendim bir sürücü yazmayı denemiyorum?"**
+
+Tabii burada küçük bir sorun vardı.
+
+**Ben sıfırdan bir kernel sürücüsü yazacak kadar teknik bilgiye veya programlama deneyimine sahip değilim.**
+
+Donanım sürücüsü yazmak, normal bir Python betiği veya masaüstü uygulaması geliştirmekten çok daha farklı.
+
+Üstelik yanlış yapılan bir işlem sistemin çökmesine bile neden olabiliyor.
+
+Bu yüzden projeyi **yapay zekâ yardımıyla** geliştirmeye karar verdim.
+
+Amacım Linux'taki bütün SOF altyapısını FreeBSD'ye taşımak değildi. Öncelikle kendi bilgisayarımın donanımına özel, ses çıkışı sağlayabilecek deneysel bir sürücü geliştirmek istiyordum.
+
+## Yapay Zekâ ile Geliştirme Süreci
+
+Öncelikle Linux çekirdeğinde bulunan **`sof-essx8336`** sürücüsünün kaynak kodunu inceledim ve Fedora sistemimde çalışan ses yapılandırmalarını topladım.
+
+Ardından elde ettiğim kaynak kodlarını, yapılandırma dosyalarını ve donanım bilgilerini **GPT-6.1 Sol (High Effort)** modeline verdim.
+
+Modele yalnızca kaynak kodlarını vermekle kalmadım. Bilgisayarımın farklı işletim sistemlerinde nasıl davrandığını da tek tek anlattım.
+
+Örneğin:
+
+- Fedora üzerinde sesin nasıl çalıştığını,
+- Diğer Linux dağıtımlarında neden sorun yaşadığımı,
+- Windows tarafındaki ses problemini,
+- FreeBSD'nin hangi donanımları algıladığını,
+- Hoparlör ve kulaklık çıkışlarının nasıl davrandığını.
+
+Böylece önce sorunun nerede olduğunu anlamaya çalıştık.
+
+Model, bilgisayarımdan teknik bilgi toplamak için birkaç **Python** ve **Shell (`sh`)** betiği hazırladı.
+
+Bu araçlarla sistem günlüklerini, ses aygıtlarının durumlarını, donanım bilgilerini ve sürücünün verdiği tepkileri incelemeye başladık.
+
+Ardından deneme yanılma süreci başladı.
+
+Ben bilgisayarımda testleri yapıyor, sonuçları modele iletiyor, model de elde ettiğimiz bilgilere göre kodu düzenliyordu.
+
+Bazen bir değişiklik hiçbir işe yaramıyordu.
+
+Bazen ses kartı algılanıyor ama hoparlörden ses gelmiyordu.
+
+Bazen de bir sorunu çözdüğümüzü düşünürken başka bir sorun ortaya çıkıyordu.
+
+Kısacası, epey uğraştık.
+
+Ama yaklaşık **4 saatlik çalışmanın sonunda ilk sesi çıkarmayı başardık!**
+
+Düşünün, FreeBSD'de günlerdir ses alamadığım hoparlörden sonunda ses geliyordu.
+
+Tabii bu, sürücünün tamamlandığı anlamına gelmiyordu.
+
+Daha yapılacak çok iş vardı.
+
+## 11 Saatin Sonunda Çalışan Hoparlör
+
+İlk sesi elde ettikten sonra sürücüyü geliştirmeye devam ettik.
+
+Ses çıkışının daha kararlı çalışması, sistem açılırken sürücünün otomatik yüklenmesi ve çeşitli yapılandırmaların düzgün uygulanması için birçok düzenleme yaptık.
+
+Hataları tespit etmek için tekrar tekrar günlük kayıtlarını inceledik.
+
+Ardından yeni yamalar hazırladık, sistemi yeniden başlattık ve testleri tekrarladık.
+
+Sonunda yaklaşık **11 saatlik çalışmanın ardından**, laptopun dahili hoparlörlerinden ses verebilen deneysel bir FreeBSD sürücüsü elde ettik.
+
+Bu benim için gerçekten güzel bir gelişmeydi.
+
+Ancak bir eksik vardı.
+
+**Kablolu kulaklık desteği henüz düzgün çalışmıyordu.**
+
+## Kulaklık Desteği: 6 Saatlik Yeni Macera
+
+Bir gün sonra tekrar bilgisayarın başına geçtim.
+
+Bu sefer hedefim **3,5 mm jak girişinden çalışan kablolu kulaklık desteğini** eklemekti.
+
+Aslında bu aşama ilkine göre biraz daha kolay oldu.
+
+Çünkü elimizde artık hoparlörlerden ses çıkarabilen çalışan bir temel vardı.
+
+Bunun üzerine kulaklık algılama ve ses çıkışları arasında geçiş yapma özelliklerini eklemeye başladık.
+
+İstediğim şey basitti:
+
+**Kulaklığı taktığımda hoparlör otomatik kapansın, ses kulaklığa geçsin. Kulaklığı çıkardığımda ise ses tekrar hoparlörden gelsin.**
+
+Normal bir bilgisayarda oldukça sıradan görünen bu özellik, kendi geliştirdiğimiz deneysel sürücüde ayrıca ele alınması gereken bir konuydu.
+
+Yine testler yaptık.
+
+Kulaklığı taktım, çıkardım, ses denemeleri yaptım, sistem günlüklerini inceledim.
+
+Bazen kulaklık çalışıyor ama hoparlör kapanmıyordu.
+
+Bazen hoparlör çalışıyor ama kulaklık algılanmıyordu.
+
+Bu sorunları da adım adım çözmeye çalıştık.
+
+Yaklaşık **6 saatlik ek çalışmanın ardından** kulaklık algılama ve otomatik ses çıkışı değiştirme özelliklerini çalıştırmayı başardık.
+
+Yani toplamda yaklaşık **17-18 saatlik çalışma sonucunda**, kendi bilgisayarımda hem hoparlör hem de kablolu kulaklık çıkışını kullanabildiğim deneysel bir sürücü ortaya çıktı.
+
+## ESSXSOF Projesini Neden Açık Kaynak Olarak Yayınladım?
+
+Başlangıçta tek amacım kendi laptopumun ses sorununu çözmekti.
+
+Ancak daha sonra şöyle düşündüm:
+
+**"Benimle aynı veya benzer donanımı kullanan başka insanlar da bu sorunu yaşıyor olabilir."**
+
+Bu yüzden ortaya çıkan projeyi yalnızca kendi bilgisayarımda tutmak istemedim.
+
+Sürücüyü **ESSXSOF** adıyla GitHub üzerinde açık kaynak olarak yayınladım.
+
+Projede yalnızca sürücünün kaynak kodları bulunmuyor. Kurulum betikleri, çeşitli yardımcı araçlar ve teknik dokümantasyonlar da yer alıyor.
+
+Özellikle dokümantasyon kısmına önem vermeye çalıştım.
+
+Çünkü bir geliştirici projeyi incelediğinde sürücünün nasıl çalıştığını, hangi donanım özelliklerinden yararlandığını ve hangi parçaların kendi sistemine özel olduğunu anlayabilsin istedim.
+
+Bu belgeleri de yapay zekâ yardımıyla hazırladım.
+
+Belgelerde donanım kayıtları, ses çıkışı yönetimi, kulaklık algılama, sistem başlangıcında sürücünün yüklenmesi ve geliştirme sırasında karşılaştığımız sorunlar gibi birçok teknik ayrıntı bulunuyor.
+
+Böylece başka bir geliştirici isterse bu kaynakları inceleyerek kendi donanımına uygun bir uyarlama yapmayı deneyebilir.
+
+Ayrıca günümüzde GPT veya Claude gibi modeller, karmaşık kaynak kodlarını incelemek ve açıklamak konusunda da yardımcı olabiliyor.
+
+Dolayısıyla projeyle ilgilenen kişiler, yeterli teknik bilgiye sahip olmaları ve gerekli testleri dikkatli şekilde yapmaları koşuluyla bu araçlardan da yararlanabilirler.
+
+Tabii burada önemli bir şeyi belirtmek istiyorum:
+
+**ESSXSOF, bütün Intel SOF veya ES8336 donanımlarını destekleyen evrensel bir sürücü değil.**
+
+Şu an için kendi **Casper Nirvana NB F500** bilgisayarım üzerinde geliştirdiğim ve test ettiğim, donanıma özel deneysel bir çalışma.
+
+Dolayısıyla başka bir bilgisayarda doğrudan çalışacağının garantisi yok.
+
+Ancak benzer donanımlar üzerinde çalışmak isteyen geliştiriciler için bir başlangıç noktası veya teknik kaynak olabilir.
+
+Zaten projeyi yayınlamamın en önemli nedenlerinden biri de bu.
+
+## Sonuç
+
+Açıkçası bu işe başlarken kendi bilgisayarım için çalışan bir ses sürücüsü ortaya çıkarabileceğimi pek düşünmüyordum.
+
+Sonuçta kernel sürücüsü geliştirme konusunda ciddi bir deneyimim yoktu.
+
+Ama merak ettim, araştırdım, denedim ve yapay zekânın da yardımıyla bir şeyler ortaya çıkarmayı başardım.
+
+Bu süreçte sürücülerin nasıl çalıştığı, donanımla nasıl iletişim kurulduğu ve küçük gibi görünen bir ses sorununun arkasında ne kadar karmaşık bir yapı olabildiği hakkında birçok yeni şey öğrendim.
+
+Elbette bu proje kusursuz değil. Hâlâ deneysel ve geliştirmeye açık.
+
+Ama en azından benim bilgisayarımda **FreeBSD 15.1 üzerinde hoparlör ve kablolu kulaklık artık çalışıyor.**
+
+Başlangıçtaki hedefim de zaten buydu.
+
+Kim bilir, belki ileride bu çalışma başka geliştiricilerin de işine yarar.
+
+**Şimdilik benden bu kadar!**
+
+Yazımı okuduğunuz için teşekkür ederim.
+
+Projeye, kaynak kodlarına ve teknik dokümantasyona aşağıdaki GitHub bağlantısından ulaşabilirsiniz.
+
+**GitHub:** [nullnode1/essxsof](https://github.com/nullnode1/essxsof)
