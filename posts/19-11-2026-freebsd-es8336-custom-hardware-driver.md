@@ -14,7 +14,7 @@ Kurulum ekranının tasarımı eski olmasına rağmen gayet anlaşılır bir şe
 
 Neyse, sistemi kurdum. Oturum yöneticisi için hız ve hafiflik odaklı olan **LightDM**'yi seçtim. Görüntü sunucusu için ise ne yazık ki **Wayland** desteği hala deneysel ve hala buglar bulunduğu için daha eski ama kaliteli olan **X11** görüntü sunucusunu seçtim.
 
-Sistem ağır olmasın, görüntü net ve hızlı olsun diye de **Masaüstü ortamı olarak **XFCE4** seçtim. Birkaç ayar yaptıktan sonra **XFCE4'ü** istediğim kıvama getirdim ve masaüstümü kurdum.
+Sistem ağır olmasın, görüntü net ve hızlı olsun diye de **Masaüstü ortamı olarak XFCE4 seçtim.** Birkaç ayar yaptıktan sonra **XFCE4'ü** istediğim kıvama getirdim ve masaüstümü kurdum.
 
 Şimdi ise sistemimde şuan nelerin çalışıp çalışmadığına gelelim.
 
