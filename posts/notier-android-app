@@ -1,5 +1,9 @@
+---
+layout: default
+title: Notier Android Uygulaması
+date: 2026-11-16
+---
 # Notier Android Uygulaması
-*16 Kasım 2026*
 
 Piyasadaki gelişmiş **Obsidian** vb. not alma yazılımlarının gereksiz derecede dolu özellikli ve karmaşık arayüzlerini beğenmediğim için aktif olarak geliştirdiğim bir **Native** **Android** not tutma uygulamasıdır.
 
