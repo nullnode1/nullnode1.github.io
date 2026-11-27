@@ -1,0 +1,21 @@
+---
+layout: null
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://sitemaps.org">
+  <url>
+    <loc>{{ site.url }}{{ site.baseurl }}/</loc>
+    <lastmod>{{ site.time | date_to_xmlschema }}</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+  {% assign tum_yazilar = site.pages | where_exp: "item", "item.path contains 'posts/'" | where_exp: "item", "item.name != 'index.md'" | where_exp: "item", "item.date != nil" | sort: "date" | reverse %}
+  {% for yazi in tum_yazilar %}
+  <url>
+    <loc>{{ site.url }}{{ site.baseurl }}{{ yazi.url }}</loc>
+    <lastmod>{{ yazi.date | date_to_xmlschema }}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  {% endfor %}
+</urlset>
