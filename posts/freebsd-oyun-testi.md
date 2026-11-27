@@ -2,6 +2,7 @@
 layout: default
 title: FreeBSD Oyun Testi
 date: 2026-11-21
+---
 ## FreeBSD Oyun Testi
 
 Selamlar, şu sıralar FreeBSD'yi kullanmayı öğrenmeye devam etmekteyim. Geçenlerde masaüstümü sorunsuz stabil bir şekilde kurmuştum. Bugünde hafif bir oyun testi yapmak istedim.
