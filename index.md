@@ -14,4 +14,4 @@ title: Ana Sayfa
   {% endfor %}
 {% else %}
 Henüz yayınlanmış bir yazı bulunmuyor.
-{% endif %}\
+{% endif %}
