@@ -1,0 +1,24 @@
+---
+layout: null
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://w3.org">
+  <channel>
+    <title>{{ site.title | default: "Blog" | xml_escape }}</title>
+    <description>{{ site.description | default: "Son gönderilerim ve notlarım" | xml_escape }}</description>
+    <link>{{ site.url }}{{ site.baseurl }}/</link>
+    <atom:link href="{{ site.url }}{{ site.baseurl }}/rss.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>{{ site.time | date_to_rfc822 }}</pubDate>
+    <lastBuildDate>{{ site.time | date_to_rfc822 }}</lastBuildDate>
+    {% assign tum_yazilar = site.pages | where_exp: "item", "item.path contains 'posts/'" | where_exp: "item", "item.name != 'index.md'" | where_exp: "item", "item.date != nil" | sort: "date" | reverse %}
+    {% for yazi in tum_yazilar limit:20 %}
+    <item>
+      <title>{{ yazi.title | default: yazi.name | xml_escape }}</title>
+      <description>{{ yazi.description | default: yazi.excerpt | strip_html | xml_escape }}</description>
+      <pubDate>{{ yazi.date | date_to_rfc822 }}</pubDate>
+      <link>{{ site.url }}{{ site.baseurl }}{{ yazi.url }}</link>
+      <guid isPermaLink="true">{{ site.url }}{{ site.baseurl }}{{ yazi.url }}</guid>
+    </item>
+    {% endfor %}
+  </channel>
+</rss>
