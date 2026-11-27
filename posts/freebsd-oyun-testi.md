@@ -1,0 +1,158 @@
+---
+layout: default
+title: FreeBSD Oyun Testi
+date: 2026-11-21
+## FreeBSD Oyun Testi
+
+Selamlar, şu sıralar FreeBSD'yi kullanmayı öğrenmeye devam etmekteyim. Geçenlerde masaüstümü sorunsuz stabil bir şekilde kurmuştum. Bugünde hafif bir oyun testi yapmak istedim.
+Öncelikle ben çok fazla oyun oynayan birisi değilim, oynarsamda klasik oyunları severim mesela **Crysis, The Forest, Don't Starve Together, Half-Life** vb. geleneksel oyunları oynarım. Şuanlık **Steam** kurmak istemediğim için hızlıca bir oyun testine atılmak istedim. Bu yüzden **DRM-Free** yani **DRM** bulunmayan korsan oyunlar kullandım.
+
+Öncelikle sistemimi merak ediyorsanız şöyle:
+
+- Sistem: FreeBSD 15.1 
+- Bilgisayar: NIRVANA NB F500 
+- İşlemci: Intel Core i5-1135G7 
+- Ekran kartı: Intel Iris Xe 
+- RAM: 8 GB 
+- Depolama: 458 GB 
+- Masaüstü: Xfce 4.20 
+- Ekran: 1920×1080, 60 Hz 
+
+Sistemim bir oyuncu sistemi değil, daha çok günlük amaçlar için yeterli bir sistem. 
+Hızlıca indirip oynamak istediğim  için hafif  ve eski oyunlar oynadım. Ama yakında daha yeni oyunlar için test yaptığımda bu gönderiyi düzenlerim.
+
+Öncelikle test ettiğim oyunlar:
+
+- AssaultCube (Native)
+- GZDoom - Doom2 (Native)
+- Half-Life 1 (Windows Sürümü, wine-proton)
+- I'm Not a Human (Windows Sürümü, wine-proton)
+- Don't Starve Together (Windows sürümü, wine-proton)
+
+## 1- AssaultCube (Native)
+![assault_1.png](https://i.hizliresim.com/8nhfufpu.png)
+
+AssaultCube, Açık kaynaklı bir oyun motoru olan **Cube** oyun motoru ile geliştirilmiş retro nişancı türü bir oyundur. Çok oyunculu desteği vardır ve DeathMatch, TeamDeathMatch gibi oyun modları vardır. İçinde onlarca harita bulunmaktadır. Offline olarak 16vs16 bota kadar oynanabilir.
+
+Aslında daha önce oynamadığım bir oyun, ama sevdim. Biraz **CS-1.6** hissiyatı veriyor diyebilirim. Arkadaşlarla oynamalık ve 2-3 el atmalık hafif hızlı bir oyun.
+Hiçbir sorun çıkmadı, gayet akıcı bir şekilde **60FPS** sabit çalışdı. Tabi bir zahmet çalışsın, kaç yıllık oyun sonuçta.
+
+![assault_2.png](https://i.hizliresim.com/4ayvdjhc.png)
+
+Oyunda kırmızı ve mavi olmak üzere iki takım var. Hiçbir sorunu yok, yağ gibi akıyor :D
+
+## 2- Doom 2 - GZDoom (Native)
+![doom_1.png](https://i.hizliresim.com/nboldwuh.png)
+
+Bununda bir **Native** portu varmış, gayet akıcı çalıştı :D Zaten yanlış hatırlamıyor isem bu oyunun en az bir **30 yılı vardır.**
+
+Hiçbir sorun çıkmadı, oyun motoru gayet güzelbir şekilde port edilmiş durumda.
+
+![doom_2.png](https://i.hizliresim.com/a649tq3l.png)
+
+Yani, anlatacak bir şey yok. Düz doom amk.
+
+## 3- Half-Life (Wine-Proton)
+![halflife_1.png](https://i.hizliresim.com/n5xaxkyj.png)
+
+Herkesin çocukluğunun ve yılların oyunu, FPS oyunları denince akla ilk gelen oyunlardan birisidir kendisi. Çok oynamışımdır. 
+
+Normalde **Half-Life'in** native linux portu var. Siz isterseniz **Linuxlator** adı verilen bir uyumluluk aracı üzerinden oynayabilirsiniz. Ama ben bunu seçmedim.
+
+Onun yerine **FreeBSD** için yapılmış bir **Proton** portu olan **wine-proton** aracını kullandım. Yanlış hatırlamıyorsam en son kararlı sürümü **proton-10.0.4** idi. Peki nasıl çalıştı? yani hiçbir sorun yok. Düz Linux'ta **Proton'u** nasıl kullanıyorsanız **FreeBSD'de** de aynısı. 
+
+![halflife_2.png](https://i.hizliresim.com/fh6nhgav.png)
+
+Linux'taki **Proton'u** almışlar **FreeBSD'ye** koymuşlar. Performans Linux ile birebir aynı.
+
+## 4- I'm Not a Human (Wine-Proton)
+![im_not_a_human_1.png](https://i.hizliresim.com/ccsysexg.png)
+
+Kendisi sevilen bir **Indie** psikolojik korku oyunu. Bende çok severim. Ama sistemimde öyle ahım şahım bir şekilde çalışmadı. Öncelikle 3D yani bildiğiniz evde yürüdüğümüz zaman vb. **40-50 FPS** aralığında çalıştı. 1280x720 çözünürlüğünde.
+
+Peki memnun muyum? Aslında oynanabilir bir FPS hemde çok iyi bu sisteme göre ama sorun şu ki lag var. Yani tam ekranda lag biraz gidiyor ama lag hissettiriyor yinede. Buda muhtemelen bir **Unity** projesi olduğu için böyle oluyor. Çünkü böyle laglar vb genelde hep bağımsız **Unity** projelerinde olmakta. Ama fena değil bence oynanır. 
+
+Bu arada **DXVK-3.1.1 ile oyun açılmadı.** Sürekli çöktü. Aynı zamanda **WineD3D** fena çalışmadı. Ama ben **DXVK** kullanmak istediğim için özellikle **DXVK-1.10.3** sürümünü indirerek oynayabildim. Araştırdığımda göre sorun **FreeBSD** **DRM-KMOD** sürücülerinde imiş. Ama benim için çok büyük bir sorun değil.
+
+![im_not_a_human_2.png](https://i.hizliresim.com/j7folrvk.png)
+
+Yani ben olsam öylesine oynarım. Çok takmam. Bu arada ekran yırtılması vb. çözmek için özel bir ayar çekmek gerekti.
+
+Aşağıya bırakıyorum sizde kullanabilirsiniz:
+```shell
+#!/bin/sh
+export WINEPREFIX="/home/gorkem/.wine-games"
+export WINEDLLOVERRIDES="d3d9,d3d10core,d3d11,dxgi=n"
+export DXVK_CONFIG_FILE="/usr/local/etc/dxvk.conf"
+export DXVK_HUD="fps"
+export WINEDEBUG="-all"
+export WINEFSYNC=0
+export WINEESYNC=1
+
+/usr/local/wine-proton/bin-wow64/wine "$@"
+/usr/local/wine-proton/bin-wow64/wineserver -k 2>/dev/null
+pkill -9 -f "\.exe" 2>/dev/null
+```
+
+kodu kendiniz için uyarlayıp kullanabilirsiniz. Bu arada bu kodu sadece **DirectX** kullanan oyunlarda kullanmanızı öneririm.
+
+Çalışma izni vermek için:
+```bash
+sudo chmod+x /usr/local/bin/oyun
+```
+Oyun çalıştırma komutu için ise:
+```bash
+/usr/local/bin/oyun OyunAdi.exe
+```
+Umarım yardımcı olabilmişimdir.
+
+## 5- Don't Starve Together (Wine-proton)
+![dont_tarve_1.png](https://i.hizliresim.com/xcn4piqz.png)
+
+Kendisi 2D psikolojik hayatta kalma oyunudur. Çok oynamasamda sevdiğim ve beğendiğim bir oyundur. Native Linux desteği vardır yani ben bunu Linuxlator üzerinden oynayabilirdim. Ama Linuxlator kurmaya üşendiğim için Windows sürümünü kullanıyorum. Tek başıma oynuyorum.
+
+![dont_starve_2.png](https://i.hizliresim.com/mdkvoq7z.png)
+
+Ben kendimce hiçbir kasma donma vb. yaşamadım. Oyun yağ gibi aktı. Tek sorun bana bir DLL hatası vermesiydi. Ve beni biraz uğraştırdı diyebilirim. Ama en sonunda çalıştırmayı becerebildim.
+
+Merak edenler için başlatma ayarlarım:
+```bash
+#!/bin/sh
+export WINEPREFIX="/home/gorkem/.wine-games"
+
+# Yerleşik ucrtbase + native d3dcompiler_47 + DXVK
+export WINEDLLOVERRIDES="ucrtbase=b;d3dcompiler_47=n;d3d9,d3d11,dxgi=n,b;mshtml=d;winemenubuilder.exe=d"
+
+# FreeBSD senkronizasyon ve performans ayarları
+export WINEESYNC=1
+export WINEFSYNC=0
+export DXVK_STATE_CACHE=1
+export WINEDEBUG="-all"
+
+# Oyunun kendi klasörüne girip başlat (data dosyalarını sorunsuz bulması için)
+if [ -n "$1" ]; then
+    cd "$(dirname "$1")" || exit 1
+    /usr/local/wine-proton/bin-wow64/wine "./$(basename "$1")"
+fi
+
+# Oyun kapandıktan sonra arkaplan işlemlerini temizle
+/usr/local/wine-proton/bin-wow64/wineserver -k 2>/dev/null
+pkill -9 -f "\.exe" 2>/dev/null
+```
+
+
+
+
+---
+## FreeBSD'de Oyun Oynanır mı?
+Şimdilik sizn için kesin bir sonuç veremem. Çünkü **Native olarak Steam desteği yok.** aynı zamanda da **CS2, Valorant** gibi AntiCheat gerektiren **Online** oyunları oynayamazsınız.
+
+Ama şunu belirteyim **Steam** hiç kurulmaz değil, sadece **Linux** gibi **Native** desteklenmiyor. Yoksa **Linuxlator** ile bal gibi de kurarsınız, bal gibi de oynarsınız.
+
+Benim için **FreeBSD'de** oyun oynanır. Çünkü rekabetci oyunlar genelde oynamam. Aynı zamanda eğer **Ekran kartı sürücüleriniz çalışıyor ise ve diğer donanımlarınız da FreeBSD tarafından sorunsuz tanımlandıysa oyun oynayamamanız için hiçbir sebep yok.**
+
+Eski zamanlarda **Linux'ta** oyun oynamak ne ise, şuanda da **FreeBSD'de** oyun oynamak aynısıdır. Oynayamazsın değil, sadece elle ayarlama ister. Eskiden **Linux'ta Lutris vb. arayüz araçları ile proton, wine kurup oyun oynamıyorduk ki, elle yapıyorduk.** İşte **FreeBSD'de** böyle. Ayarını yapınca mis gibi oynarsın.
+
+Peki **Linux** ile performans farkı olur mu? Yani **Linux'ta** bulunan **Proton** vb. araçlar çok daha gelişmiş. Ama yinede **Linux'taki performansınız ne ise FreeBSD'de neredeyse aynıdır. Hatta bazen FreeBSD daha iyi FPS verebilir.**
+
+Neyse, şuanlık bukadar. Oyun listesi şuanda baya sınırlı :D Yakında daha fazla oyun ekleyip burayı doldurmayı düşünüyorum. Okuduğunuz için teşekkürler.
